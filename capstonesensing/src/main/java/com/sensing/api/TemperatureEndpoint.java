@@ -1,13 +1,20 @@
 package com.sensing.api;
 
+import static com.googlecode.objectify.ObjectifyService.ofy;
+
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiMethod.HttpMethod;
 import com.google.api.server.spi.config.Named;
+import com.googlecode.objectify.ObjectifyService;
 import com.sensing.entity.TemperatureEntity;
 
 @Api(name = "temperatureAPI", version = "v1")
 public class TemperatureEndpoint {
+
+	static {
+		ObjectifyService.register(TemperatureEntity.class);
+	}
 
 	/**
 	 * This method gets the entity having primary key id. It uses HTTP GET method.
@@ -18,8 +25,9 @@ public class TemperatureEndpoint {
 	 */
 	@ApiMethod(name = "getTemperatureEntity", httpMethod = HttpMethod.GET, path = "temperature/{id}")
 	public TemperatureEntity getTemperatureEntity(@Named("id") Long id) {
-		
-		return null;
+		TemperatureEntity res = ofy().load().type(TemperatureEntity.class).id(id).now();
+
+		return res;
 	}
 
 	/**
@@ -32,7 +40,7 @@ public class TemperatureEndpoint {
 	 */
 	@ApiMethod(name = "insertTemperatureEntity", httpMethod = HttpMethod.POST, path = "temperature")
 	public TemperatureEntity insertTemperatureEntity(TemperatureEntity temperatureEntity) {
-		
+
 		return temperatureEntity;
 	}
 
@@ -46,7 +54,7 @@ public class TemperatureEndpoint {
 	 */
 	@ApiMethod(name = "updateTemperatureEntity", httpMethod = HttpMethod.PUT, path = "temperature")
 	public TemperatureEntity updateTemperatureEntity(TemperatureEntity temperatureEntity) {
-		
+
 		return temperatureEntity;
 	}
 
@@ -59,6 +67,6 @@ public class TemperatureEndpoint {
 	 */
 	@ApiMethod(name = "removeTemperatureEntity", httpMethod = HttpMethod.DELETE, path = "temperature/{id}")
 	public void removeTemperatureEntity(@Named("id") Long id) {
-		
+
 	}
 }
