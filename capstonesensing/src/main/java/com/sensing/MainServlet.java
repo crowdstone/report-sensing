@@ -12,10 +12,7 @@ public class MainServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-		// TemperatureEntity test = new TemperatureEntity(14, new Date(), 42.0, 42.0);
-		// ofy().save().entity(test).now();
-
+		
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
 

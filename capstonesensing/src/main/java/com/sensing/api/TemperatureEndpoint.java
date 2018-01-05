@@ -40,7 +40,8 @@ public class TemperatureEndpoint {
 	 */
 	@ApiMethod(name = "insertTemperatureEntity", httpMethod = HttpMethod.POST, path = "temperature")
 	public TemperatureEntity insertTemperatureEntity(TemperatureEntity temperatureEntity) {
-
+		ofy().save().entity(temperatureEntity).now();
+		
 		return temperatureEntity;
 	}
 
