@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
-    name = "Temperature",
-    urlPatterns = {"/temperature"}
+    name = "HelloAppEngine",
+    urlPatterns = {"/hello"}
 )
-public class TemperatureServlet extends HttpServlet {
+public class MainServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -21,8 +21,6 @@ public class TemperatureServlet extends HttpServlet {
     response.setCharacterEncoding("UTF-8");
 
     response.getWriter().print("Hello App Engine!\r\n");
-    
-    // TODO : get result of temperature sensing
 
   }
 }

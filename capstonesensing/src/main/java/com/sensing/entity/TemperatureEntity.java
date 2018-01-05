@@ -2,30 +2,28 @@ package com.sensing.entity;
 
 import java.util.Date;
 
-import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
-import javax.jdo.annotations.PrimaryKey;
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
 
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
+@Entity
 public class TemperatureEntity {
-	
-	@PrimaryKey
-	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+
+	@Id
 	Long id;
-	
-	@Persistent
 	double value;
-	
-	@Persistent
 	Date date;
-	
-	@Persistent
 	double longitude;
-	
-	@Persistent
 	double latitude;
+	
+	private TemperatureEntity() {}
+	
+	public TemperatureEntity(double value, Date date, double longitude, double latitude) {
+		super();
+		this.value = value;
+		this.date = date;
+		this.longitude = longitude;
+		this.latitude = latitude;
+	}
 
 	public Long getId() {
 		return id;
