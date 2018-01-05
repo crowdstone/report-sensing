@@ -48,14 +48,16 @@
 			<version>1.2</version>
 		</dependency>
 		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-endpoints</artifactId>
-			<version>1.7.5</version>
-		</dependency>
-		<dependency>
 			<groupId>javax.jdo</groupId>
 			<artifactId>jdo2-api</artifactId>
 			<version>2.3-eb</version>
+		</dependency>
+
+		<!-- Endpoint dependency -->
+		<dependency>
+			<groupId>com.google.endpoints</groupId>
+			<artifactId>endpoints-framework</artifactId>
+			<version>2.0.10</version>
 		</dependency>
 
 		<!-- Test Dependencies -->
@@ -90,6 +92,16 @@
 				<groupId>com.google.cloud.tools</groupId>
 				<artifactId>appengine-maven-plugin</artifactId>
 				<version>${appengine.maven.plugin.version}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>endpoints-framework-maven-plugin</artifactId>
+				<version>1.0.2</version>
+				<configuration>
+					<!-- plugin configuration -->
+					<hostname>capstonesensing.appspot.com</hostname>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
