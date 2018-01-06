@@ -13,21 +13,18 @@ public class TemperatureEntity {
 	private String id;
 	private double value;
 	private Date date;
-	private int latInf;
-	private int latSup;
-	private int longInf;
-	private int longSup;
+	private double latitude;
+	private double longitude;
 	
 	private TemperatureEntity() {}
 	
-	public TemperatureEntity(double value, Date date, int latInf, int latSup, int longInf, int longSup) {
-		this.id = latInf + "." + latSup + "_" + longInf + "." + longSup;
+	public TemperatureEntity(double value, Date date, double latitude, double longitude) {
 		this.value = value;
 		this.date = date;
-		this.latInf = latInf;
-		this.latSup = latSup;
-		this.longInf = longInf;
-		this.longSup = longSup;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		
+		updateId();
 	}
 	
 	/**
@@ -38,7 +35,7 @@ public class TemperatureEntity {
 	}
 	
 	public void updateId() {
-		this.id = this.latInf + "." + this.latSup + "_" + this.longInf + "." + this.longSup;
+		this.id = this.latitude + "_" + this.longitude;
 	}
 
 	public String getId() {
@@ -61,39 +58,21 @@ public class TemperatureEntity {
 		this.date = date;
 	}
 
-	public int getLatInf() {
-		return latInf;
+	public double getLatitude() {
+		return latitude;
 	}
 
-	public void setLatInf(int latInf) {
-		this.latInf = latInf;
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
 		updateId();
 	}
 
-	public int getLatSup() {
-		return latSup;
+	public double getLongitude() {
+		return longitude;
 	}
 
-	public void setLatSup(int latSup) {
-		this.latSup = latSup;
-		updateId();
-	}
-
-	public int getLongInf() {
-		return longInf;
-	}
-
-	public void setLongInf(int longInf) {
-		this.longInf = longInf;
-		updateId();
-	}
-
-	public int getLongSup() {
-		return longSup;
-	}
-
-	public void setLongSup(int longSup) {
-		this.longSup = longSup;
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 		updateId();
 	}
 }
