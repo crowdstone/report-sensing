@@ -18,9 +18,9 @@ public class TemperatureEntity {
 	
 	private TemperatureEntity() {}
 	
-	public TemperatureEntity(double value, Date date, double latitude, double longitude) {
+	public TemperatureEntity(double value, double latitude, double longitude) {
 		this.value = value;
-		this.date = date;
+		this.date = new Date();
 		this.latitude = latitude;
 		this.longitude = longitude;
 		

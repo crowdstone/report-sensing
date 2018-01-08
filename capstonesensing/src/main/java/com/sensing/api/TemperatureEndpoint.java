@@ -2,6 +2,7 @@ package com.sensing.api;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
+import java.util.Date;
 import java.util.List;
 
 import com.google.api.server.spi.config.Api;
@@ -48,7 +49,7 @@ public class TemperatureEndpoint {
 	 * @return The entity with primary key id.
 	 */
 	@ApiMethod(name = "getTemperatureEntity", httpMethod = HttpMethod.GET, path = "temperature/{id}")
-	public TemperatureEntity getTemperatureEntity(@Named("id") Long id) {
+	public TemperatureEntity getTemperatureEntity(@Named("id") String id) {
 		TemperatureEntity res = ofy().load().type(TemperatureEntity.class).id(id).now();
 
 		return res;
@@ -72,6 +73,7 @@ public class TemperatureEndpoint {
 		}
 
 		temperatureEntity.updateId();
+		temperatureEntity.setDate(new Date());
 		ofy().save().entity(temperatureEntity).now();
 
 		return temperatureEntity;
@@ -95,6 +97,7 @@ public class TemperatureEndpoint {
 		}
 
 		temperatureEntity.updateId();
+		temperatureEntity.setDate(new Date());
 		ofy().save().entity(temperatureEntity).now();
 
 		return temperatureEntity;
@@ -108,7 +111,7 @@ public class TemperatureEndpoint {
 	 *            the primary key of the entity to be deleted.
 	 */
 	@ApiMethod(name = "removeTemperatureEntity", httpMethod = HttpMethod.DELETE, path = "temperature/{id}")
-	public void removeTemperatureEntity(@Named("id") Long id) {
+	public void removeTemperatureEntity(@Named("id") String id) {
 		ofy().delete().type(TemperatureEndpoint.class).id(id).now();
 	}
 }
